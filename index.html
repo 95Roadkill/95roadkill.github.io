@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- build:css styles/main.css -->
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+
+    </head>
+    <body>
+        <div class = "loadingicon"> 
+            <img 
+                src="images/load_roulette_sides.png"
+            /> 
+        </div>
+        <div class = "loadingicon"> 
+            <img 
+                src="images/load_roulette_spin.png" 
+                class="rotate linear infinite"
+            /> 
+        </div>
+        <div class = "servername">
+            <p>
+                Fallout <br>
+                New World Blues
+            </p>
+        </div>
+        <div class = "serverversion">
+            <p>
+                Version 0.0.1
+            </p>
+        </div>
+        <div class = "randomtext"> 
+            <p id ="toptext"></p> </div>
+        <div class="loading-bar">
+            <!-- <div id="progressbar" class="progress-bar"></div> -->
+            <p id ="statustext"></p>
+            <p id ="statusfiles"></p>
+        </div>
+
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/main.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:remove -->
+        <script src="scripts/contentloaded.js"></script>
+        <script src="scripts/demo.js"></script>
+        <!-- endbuild -->
+    </body>
+</html>
