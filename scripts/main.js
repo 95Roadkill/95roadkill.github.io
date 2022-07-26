@@ -21,7 +21,7 @@ var titles = [
     "Rad Resistance allows you to—what else? -- resist Radiation. This perk grants an additional 25% to Radiation Resistance.",
     "At workbenches, the Science skill can help you recycle Energy Weapon ammunition and craft other useful items like stimpaks.",
     "Whether you're good, bad, or somewhere in between, all major communities and organizations in the Mojave wasteland will pay attention to your reputation.",
-    "You can restore Health by using a Stimpak, eating food pr drinking from a water source.",
+    "You can restore Health by using a Stimpak, eating food or drinking from a water source.",
     "Most energy weapons fall into one of two categories: laser, which is fast, accurate, and low damage; and Plasma, which is slow-moving and very high damage.",
     "The Followers of the Apocalypse are an organization with roots in the pre-NCR Boneyard. Dedicated to teaching the poor and healing the sick, they are also considered anarchist revolutionaries by many people in positions of power.",
     "Due to disagreements over how technology should be controlled in the wasteland, the Brotherhood of Steel waged a long and bloody war against the NCR. Despite superior equipment and training, the Brotherhood went into retreat.",
