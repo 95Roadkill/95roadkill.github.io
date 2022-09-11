@@ -21,7 +21,7 @@ var titles = [
     "Rad Resistance allows you to—what else? -- resist Radiation. This perk grants an additional 25% to Radiation Resistance.",
     "At workbenches, the Science skill can help you recycle Energy Weapon ammunition and craft other useful items like stimpaks.",
     "Whether you're good, bad, or somewhere in between, all major communities and organizations in the Mojave wasteland will pay attention to your reputation.",
-    "You can restore Health by using a Stimpak, eating food or drinking from a water source.",
+    "You can restore Health by using a Stimpak, eating food pr drinking from a water source.",
     "Most energy weapons fall into one of two categories: laser, which is fast, accurate, and low damage; and Plasma, which is slow-moving and very high damage.",
     "The Followers of the Apocalypse are an organization with roots in the pre-NCR Boneyard. Dedicated to teaching the poor and healing the sick, they are also considered anarchist revolutionaries by many people in positions of power.",
     "Due to disagreements over how technology should be controlled in the wasteland, the Brotherhood of Steel waged a long and bloody war against the NCR. Despite superior equipment and training, the Brotherhood went into retreat.",
@@ -29,30 +29,86 @@ var titles = [
     "Though they were a powerful force in the west decades ago, the Enclave has not been seen or heard from in the Mojave Wasteland for years.",
     "At the Battle of Hoover Dam, the tide turned for the NCR when Rangers and 1st Recon sharpshooters lured Caesar's soldier into the booby-trapped ruins of Boulder City.",
 ];
-var CounterNum = getRandomInt(titles.length);
 
-function Counter(elem, delay) {
-	var interval;
-    
-    elem.innerText = titles[CounterNum];
+var Backgrounds = [
+    "../loadingscreen/images/backgrounds/loading_posters01.jpg",
+    "../loadingscreen/images/backgrounds/loading_posters02.jpg",
+    "../loadingscreen/images/backgrounds/loading_posters03.jpg",
+    "../loadingscreen/images/backgrounds/loading_magazines01.jpg",
+    "../loadingscreen/images/backgrounds/loading_magazines02.jpg",
+    "../loadingscreen/images/backgrounds/loading_magazines03.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop01.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop02.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop03.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop04.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop05.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop06.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop07.jpg",
+    "../loadingscreen/images/backgrounds/loading_desktop08.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard01.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard02.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard03.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard04.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard05.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard06.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard07.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard08.jpg",
+    "../loadingscreen/images/backgrounds/loading_bulletinboard09.jpg",
+    "../loadingscreen/images/backgrounds/loading_building01.jpg",
+    "../loadingscreen/images/backgrounds/loading_building02.jpg",
+    "../loadingscreen/images/backgrounds/loading_building03.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard01.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard02.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard03.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard04.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard05.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard06.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard07.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard08.jpg",
+    "../loadingscreen/images/backgrounds/loading_billboard09.jpg",
+]
+var RandomText = getRandomInt(titles.length);
+let RandomBackground = getRandomInt(Backgrounds.length);
+var SwitchDelay = 10000;
 
-	function updateDisplay(value) {
-	    elem.innerText = value;
-	}
+const imgs = [document.getElementById('img1'),document.getElementById('img2')];
+var elem = document.getElementById("toptext");
+var counter = new Counter(elem, SwitchDelay);
+counter.start();
 
-	function run() {
-	    CounterNum += 1;
-	    if (CounterNum == titles.length) CounterNum = 0;
+let back=0;
+let pause = false;
 
-	    updateDisplay(titles[CounterNum]);
-	}
+function imgLoaded() {
 
-	function start() {
-	    interval = window.setInterval(run, delay);
-	}
-	this.start = start;
+    imgs[back].style.animationDirection = 'normal';
+    back = (back + 1)%2;
+    imgs[back].style.animationDirection = 'reverse';
+
+    imgs[0].style.animationName = 'fade-in';
+    imgs[1].style.animationName = 'fade-in';
 }
 
-var elem = document.getElementById("toptext");
-var counter = new Counter(elem, 10000);
-counter.start();
+function next() { 
+    imgs[0].style.animationName ='nothing';
+    imgs[1].style.animationName = 'nothing';
+
+    imgs[back].style.opacity = 0;
+    imgs[(back+1)%2].style.opacity = 1;
+
+    RandomBackground = getRandomInt(Backgrounds.length);
+    imgs[back].src = Backgrounds[RandomBackground]
+}
+
+function Counter(elem, delay) {
+    var interval;
+    elem.innerText = titles[RandomText];
+    imgs[0].src = Backgrounds[RandomBackground]
+    imgs[1].src = Backgrounds[RandomBackground]
+
+    function updateDisplay(value) { elem.innerText = value; next()}
+    function run() {RandomText = getRandomInt(titles.length); updateDisplay(titles[RandomText]); }
+    function start() { interval = window.setInterval(run, delay); }
+
+    this.start = start;
+}
