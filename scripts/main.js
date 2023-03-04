@@ -98,6 +98,9 @@ function next() {
 
     RandomBackground = getRandomInt(Backgrounds.length);
     imgs[back].src = Backgrounds[RandomBackground]
+    
+    console.log(Backgrounds[RandomBackground])
+    console.log(getRandomInt(Backgrounds.length))
 }
 
 function Counter(elem, delay) {
@@ -105,7 +108,9 @@ function Counter(elem, delay) {
     elem.innerText = titles[RandomText];
     imgs[0].src = Backgrounds[RandomBackground]
     imgs[1].src = Backgrounds[RandomBackground]
-
+    
+    console.log(Backgrounds[RandomBackground])
+    
     function updateDisplay(value) { elem.innerText = value; next()}
     function run() {RandomText = getRandomInt(titles.length); updateDisplay(titles[RandomText]); }
     function start() { interval = window.setInterval(run, delay); }
